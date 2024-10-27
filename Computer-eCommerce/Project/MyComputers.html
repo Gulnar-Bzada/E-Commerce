@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Computers</title>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+        <link rel="icon" href="Logo.jpg">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .ex_img{
+                width: 50px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="container p-3 mb-5">
+            <img class="float-end" id="acc" src="Acc_pht.png" style="width: 40px;height: 40px;">
+            <h5 class="d-inline-block float-end p-2 ms-5" id="h5"></h5>
+            <a href="Project.html"><img src="Logo.jpg" class="d-inline-block" style="width: 5%;"></a>
+            <a class="d-inline-block fs-3 h1 text-decoration-none" style="color: black;cursor: pointer;" href="Project.html">Dator Storé</a>
+            <nav class="navbar-nav d-inline-block mx-auto justify-content-around float-end" style="list-style-type: none;">
+                <li class="nav-item d-inline-block">
+                    <a class="rounded btn btn-outline-dark" href="LogIn.html">Close Account</a>
+                </li>
+                <li class="nav-item d-inline-block">
+                    <a class="rounded btn btn-outline-dark" href="Project.html">Home</a>
+                </li>
+            </nav>
+        </header>
+        <main class="container">
+            <button class="rounded btn btn-outline-dark mb-5" id="btn1">New Computer</Button>
+            <div class="modal modal-xl" id="modal1">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen-lg-down">
+                    <div class="modal-content" id="modal_content">
+                        <div class="modal-header">
+                            <p class="modal-title fw-bold fs-1 text-center" id="modal-title">New Computer</p>
+                            <button class="btn-close float-end"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <form action="" class="was-validated w-50">
+                                <div class="form-group">
+                                    <label for="catagory" class="form-label">Catagory:</label>
+                                    <select class="w-100 p-2 form-control" id="catagory">
+                                        <option value="Acer">Acer</option>
+                                        <option value="Asus">Asus</option>
+                                        <option value="MacBook">MacBook</option>
+                                        <option value="Lenovo">Lenovo</option>
+                                        <option value="HP">HP</option>
+                                        <option value="Dell">Dell</option>
+                                        <option value="Samsung">Samsung</option>
+                                        <option value="Toshiba">Toshiba</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Name:</label>
+                                    <input type="text" class="w-100 form-control" required minlength="3" maxlength="20" id="name">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 3 maximum can be 20 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price" class="form-label">Price:</label>
+                                    <input type="number" class="w-100 form-control" id="price" required minlength="100" maxlength="3500">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 0 maximum can be 10000 manats</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descrip" class="form-label">Description:</label>
+                                    <input type="text" class="w-100 form-control" required minlength="5" maxlength="300" id="descrip">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 5 maximum can be 300 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new" class="form-label">New:</label>
+                                    <select class="w-100 p-2 form-control" id="new">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pht" class="form-label">Photo:</label>
+                                    <input type="text" class="w-100 form-control mb-2" required id="pht">
+                                    <div class="invalid-feedback mb-2">*Don't leave blank.</div>
+                                </div>
+                                <img src="" class="ex-img" id="ex-img">
+                            </form>
+                            <form action="" class="was-validated w-50 ms-4">
+                                <div class="form-group">
+                                    <label for="ram" class="form-label">RAM(Random-Access Memory)(GB):</label>
+                                    <input type="number" class="form-control" id="ram" required>
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cpu" class="form-label">CPU(Central Processing Unit):</label>
+                                    <input type="text" class="w-100 form-control" required id="cpu">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rom" class="form-label">ROM(Read-Only Memory)(GB):</label>
+                                    <input type="number" class="w-100 form-control" id="rom" required>
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="romtyp" class="form-label">ROM type:</label>
+                                    <select class="w-100 p-2 form-control" id="romtyp">
+                                        <option value="HDD">HDD</option>
+                                        <option value="SSD">SSD</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="os" class="form-label">OS(Operating System):</label>
+                                    <input type="text" class="w-100 form-control" required id="os">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label for="vidcard" class="form-label">Video Card(GB):</label>
+                                    <input type="number" class="w-100 form-control" required id="vidcard">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="btns" class="float-start w-100">
+                                <button class="btn btn-outline-dark" id="save">Save</button>
+                                <button class="btn btn-outline-dark" id="reset">Reset Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal modal-xl" id="modal2">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen-lg-down">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="modal-title fw-bold fs-1 text-center" id="modal-title">Edit Computer</p>
+                            <button class="btn-close float-end"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <form action="" class="was-validated w-50">
+                                <div class="form-group">
+                                    <label for="catagory" class="form-label">Catagory:</label>
+                                    <select class="w-100 p-2 form-control" id="catagory1">
+                                        <option value="Acer">Acer</option>
+                                        <option value="Asus">Asus</option>
+                                        <option value="MacBook">MacBook</option>
+                                        <option value="Lenovo">Lenovo</option>
+                                        <option value="HP">HP</option>
+                                        <option value="Dell">Dell</option>
+                                        <option value="Samsung">Samsung</option>
+                                        <option value="Toshiba">Toshiba</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Name:</label>
+                                    <input type="text" class="w-100 form-control" required minlength="3" maxlength="20" id="name1">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 3 maximum can be 20 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price" class="form-label">Price:</label>
+                                    <input type="number" class="w-100 form-control" id="price1" required minlength="100" maxlength="3500">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 0 maximum can be 10000 manats</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descrip" class="form-label">Description:</label>
+                                    <input type="text" class="w-100 form-control" required minlength="5" maxlength="300" id="descrip1">
+                                    <div class="invalid-feedback">*Don't leave blank. Minimum 5 maximum can be 300 characters</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new" class="form-label">New:</label>
+                                    <select class="w-100 p-2 form-control" id="new1">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pht" class="form-label">Photo:</label>
+                                    <input type="text" class="w-100 form-control mb-2" required id="pht1">
+                                    <div class="invalid-feedback mb-2">*Don't leave blank.</div>
+                                </div>
+                                <img src="" class="ex-img" id="ex-img">
+                            </form>
+                            <form action="" class="was-validated w-50 ms-4">
+                                <div class="form-group">
+                                    <label for="ram" class="form-label">RAM(Random-Access Memory)(GB):</label>
+                                    <input type="number" class="form-control" id="ram1" required>
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cpu" class="form-label">CPU(Central Processing Unit):</label>
+                                    <input type="text" class="w-100 form-control" required id="cpu1">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rom" class="form-label">ROM(Read-Only Memory)(GB):</label>
+                                    <input type="number" class="w-100 form-control" id="rom1" required>
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="romtyp" class="form-label">ROM type:</label>
+                                    <select class="w-100 p-2 form-control" id="romtyp1">
+                                        <option value="HDD">HDD</option>
+                                        <option value="SSD">SSD</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="os" class="form-label">OS(Operating System):</label>
+                                    <input type="text" class="w-100 form-control" required id="os1">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>                                
+                                <div class="form-group">
+                                    <label for="vidcard" class="form-label">Video Card(GB):</label>
+                                    <input type="number" class="w-100 form-control" required id="vidcard1">
+                                    <div class="invalid-feedback">*Don't leave blank.</div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="btns" class="float-start w-100">
+                                <button class="btn btn-outline-dark" id="edt">Edit</button>
+                                <button class="btn btn-outline-dark" id="reset1">Reset Information</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal modal-md" id="img">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-fullscreen-lg-down">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="" id="modal-img" height="400px" width="460px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="computers-table">
+                <table class="table table-bordered" id="computers-table-element">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">ID</th>
+                            <th style="width: 30%;">Name</th>
+                            <th style="width: 20%;">Photo</th>
+                            <th style="width: 15%;">Price</th>
+                            <th style="width: 25%;">Oparations</th>
+                        </tr>
+                    </thead>
+                    <tbody id="computers-table-body" style="font-size:15px;">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <script>
+            $(function(){
+                var comp=[];
+                var counter=0;
+                var id=1000;
+                $('#modal_content1').hide();
+                $('#img').hide();
+                $("#computers-table-element").DataTable({
+                    pageLength: 5,
+                    lengthMenu:[
+                        [2, 5, 7, 10, 20, 30, 50, 100, -1],
+                        [2, 5, 7, 10, 20, 30, 50, 100, "All"],
+                      ],
+                });
+                $('#btn1').click(function(){
+                    $('#modal1').show();
+                    $('#catagory').val('Acer');
+                    $('#name').val('');
+                    $('#price').val('');
+                    $('#descrip').val('');
+                    $('#new').val('Yes');
+                    $('#pht').val('');
+                    $('#ram').val('');
+                    $('#cpu').val('');
+                    $('#rom').val('');
+                    $('#romtyp').val('HDD');
+                    $('#os').val('');
+                    $('#vidcard').val('');
+                    $('#ex-img').attr('src', '');
+                });
+                $('.btn-close').click(function(){
+                    $('.modal').hide();
+                });
+                $('#pht').keyup(function(){
+                    var url=$(this).val();
+                    $('#ex-img').attr('src',url);
+                })
+                $('#reset').click(function(){
+                    $('#catagory').val('Acer');
+                    $('#name').val('');
+                    $('#price').val('');
+                    $('#descrip').val('');
+                    $('#new').val('Yes');
+                    $('#pht').val('');
+                    $('#ram').val('');
+                    $('#cpu').val('');
+                    $('#rom').val('');
+                    $('#romtyp').val('HDD');
+                    $('#os').val('');
+                    $('#vidcard').val('');
+                    $('#ex-img').attr('src', '');
+                });
+                $('#save').click(function(){
+                    $('#modal1').hide();
+                    var modal_catag = $('#catagory').val();
+                    var modal_name = $('#name').val();
+                    var modal_price = $('#price').val();
+                    var modal_pht = $('#pht').val();
+                    var modal_descrip = $('#descrip').val();
+                    var modal_new = $('#new').val();
+                    var modal_cpu = $('#cpu').val();
+                    var modal_ram = $('#ram').val();
+                    var modal_rom = $('#rom').val();
+                    var modal_romtyp = $('#romtyp').val();
+                    var modal_os = $('#os').val();
+                    var modal_vidcard = $('#vidcard').val();
+                    $('tbody').append('<tr class="tr1"><td>'+id+'</td><td>'+modal_name+'</td><td><img style="cursor: pointer;" class="im" src="'+modal_pht+'"></td><td>'+modal_price+'</td><td><button class="btn btn-outline-dark me-2" id="delete'+counter+'">Delete</button><button class="btn btn-outline-dark" id="edit'+counter+'">Edit</button></td></tr>');
+                    $('.im').click(function(){
+                        $('#img').show();
+                        $('#modal_img').attr('src',modal_pht);
+                    });
+                    $('#delete'+counter).click(function(){
+                        $(this).parent().parent().remove();
+                    });
+                    $('#edit'+counter).click(function(){
+                        $('#catagory1').val(modal_catag);
+                        $('#name1').val(modal_name);
+                        $('#price1').val(modal_price);
+                        $('#descrip1').val(modal_descrip);
+                        $('#new1').val(modal_new);
+                        $('#pht1').val(modal_pht);
+                        $('#ram1').val(modal_ram);
+                        $('#cpu1').val(modal_cpu);
+                        $('#rom1').val(modal_rom);
+                        $('#romtyp1').val(modal_romtyp);
+                        $('#os1').val(modal_os);
+                        $('#vidcard1').val(modal_vidcard);
+                        $('#ex-img1').attr('src', modal_pht);
+                        $('#modal2').show();
+                        $('#reset1').click(function(){
+                            $('#catagory1').val('Acer');
+                            $('#name1').val('');
+                            $('#price1').val('');
+                            $('#descrip1').val('');
+                            $('#new1').val('Yes');
+                            $('#pht1').val('');
+                            $('#ram1').val('');
+                            $('#cpu1').val('');
+                            $('#rom1').val('');
+                            $('#romtyp1').val('HDD');
+                            $('#os1').val('');
+                            $('#vidcard1').val('');
+                            $('#ex-img1').attr('src', '');
+                        });
+                        $('#edt').click(function(){
+                            id--;
+                            var modal_catag1 = $('#catagory1').val();
+                            var modal_name1 = $('#name1').val();
+                            var modal_price1 = $('#price1').val();
+                            var modal_pht1 = $('#pht1').val();
+                            var modal_descrip1 = $('#descrip1').val();
+                            var modal_new1 = $('#new1').val();
+                            var modal_cpu1 = $('#cpu1').val();
+                            var modal_ram1 = $('#ram1').val();
+                            var modal_rom1 = $('#rom1').val();
+                            var modal_romtyp1 = $('#romtyp1').val();
+                            var modal_os1 = $('#os1').val();
+                            var modal_vidcard1 = $('#vidcard1').val();
+                            $('.tr1').remove();
+                            $('tbody').append('<tr class=><td>'+id+'</td><td>'+modal_name1+'</td><td><img style="cursor: pointer;" class="im" src="'+modal_pht1+'"></td><td>'+modal_price1+'</td><td><button class="btn btn-outline-dark me-2" id="delete'+counter+'">Delete</button><button class="btn btn-outline-dark" id="edit'+counter+'">Edit</button></td></tr>');
+                            $('#modal2').hide();
+                            comp.pop();
+                            var computers={modal_catag,modal_name,modal_price,modal_pht,modal_descrip,modal_new,modal_cpu,modal_ram,modal_rom,modal_romtyp,modal_os,modal_vidcard};
+                            comp.push(computers);
+                            localStorage.removeItem('computer');
+                            localStorage.setItem('computer',JSON.stringify(comp));
+                            id++;
+                        });
+                    });
+                    var computers={modal_catag,modal_name,modal_price,modal_pht,modal_descrip,modal_new,modal_cpu,modal_ram,modal_rom,modal_romtyp,modal_os,modal_vidcard};
+                    comp.push(computers)
+                    localStorage.setItem('computer',JSON.stringify(comp));
+                    counter++;
+                    id++;
+                })
+            });
+        </script>
+        <script src="MyComputers.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

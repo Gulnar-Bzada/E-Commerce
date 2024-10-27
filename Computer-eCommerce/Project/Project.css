@@ -1,0 +1,12 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    background-color: white;
+}
+.car{
+    width: 1200px;
+    height: 600px;
+    margin-left: 4.3%;
+}

@@ -1,0 +1,20 @@
+document.getElementById('clsacc').style.display='none';
+document.getElementById('mycomp').style.display='none';
+success=localStorage.getItem('success2');
+success2=JSON.parse(success);
+if(success2==true){
+    var loggedIn=localStorage.getItem('Logged-username');
+    document.getElementById('h5').innerHTML=loggedIn;
+    document.getElementById('clsacc').style.display='block';
+    document.getElementById('mycomp').style.display='block';
+    document.getElementById('log').style.display='none';
+    document.getElementById('crtacc').style.display='none';
+}
+else{
+    document.getElementById('acc').style.display='none';
+    document.getElementById('h5').style.display='none';
+}
+document.getElementById('clsacc').addEventListener('click',function(){
+    localStorage.removeItem('success2')
+    localStorage.setItem('success2',false)
+})
